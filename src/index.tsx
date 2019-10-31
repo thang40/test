@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ErrorBoundary } from "./commons/components";
+import { ErrorBoundary, LoginForm } from "./commons/components";
 import App from "./modules/app/app.module";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
