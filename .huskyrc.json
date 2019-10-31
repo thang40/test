@@ -1,5 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "yarn test --watchAll=false, yarn lint"
+    "pre-commit": "yarn test --watchAll=false && yarn lint --max-warnings=0"
   }
 }
