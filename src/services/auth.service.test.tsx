@@ -1,5 +1,5 @@
 import { getAuthData } from "./auth.service";
 
-test("basic", () => {
+test("bas2ic", () => {
   expect(getAuthData()).toBe(0);
 });
