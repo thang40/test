@@ -29,3 +29,10 @@ export const UserPage = lazy(() => {
     new Promise(resolve => setTimeout(resolve, delayTime))
   ]).then(([moduleExports]) => moduleExports);
 });
+
+export const RegisterPage = lazy(() => {
+  return Promise.all([
+    import("./register/register.page"),
+    new Promise(resolve => setTimeout(resolve, delayTime))
+  ]).then(([moduleExports]) => moduleExports);
+});

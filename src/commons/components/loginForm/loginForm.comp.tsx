@@ -1,5 +1,5 @@
 import React from "react";
-import { ILoginModel } from "../../types/models/viewModels/login.model";
+import { ILoginViewType } from "../../types";
 
 interface LoginFormProps {
   form?: any;
@@ -8,25 +8,30 @@ interface LoginFormProps {
 
 export const LoginForm = ({ form = {}, handleLogin }: LoginFormProps) => {
   const {
-    register = () => null,
-    handleSubmit = () => null,
+    register = () => {},
+    handleSubmit = () => {},
+    setError = () => {},
     errors = {}
   } = form;
-  const onSubmit = (data: ILoginModel, e: Event) => {
+  const setErrorFromServer = (message: string) => {
+    setError("server", "server", message);
+  };
+  const onSubmit = (data: ILoginViewType, e: Event) => {
     e.preventDefault();
-    handleLogin(data);
+    handleLogin(data, setErrorFromServer);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="text" name="username" defaultValue="test" ref={register} />
+      <input type="text" name="username" ref={register} />
       <input
         type="password"
         name="password"
         ref={register({ required: true })}
       />
-      {errors.exampleRequired && <span>This field is required</span>}
+      {errors.password && <span>This field is required</span>}
       <input type="submit" />
+      {errors.server && errors.server.message}
     </form>
   );
 };

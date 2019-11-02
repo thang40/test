@@ -1,4 +1,4 @@
-import { HTTPTimeoutError, APIError } from "../commons/types/errors";
+import { HTTPTimeoutError, APIError } from "../commons/types/errorTypes";
 
 export const axiosErrorHandler = (error: any) => {
   if (process.env.NODE_ENV !== "production") {

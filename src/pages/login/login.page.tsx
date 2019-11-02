@@ -1,7 +1,7 @@
 import React from "react";
 import { LoginForm } from "../../commons/components";
 import useForm from "react-hook-form";
-import { ILoginModel } from "../../commons/types/models/viewModels/login.model";
+import { ILoginViewType } from "../../commons/types";
 import { connect } from "react-redux";
 import { loginAction, logoutAction } from "../../ducks";
 import { useAuthStatus } from "../../hooks/authHooks";
@@ -13,7 +13,7 @@ interface ILoginPageProps {
 
 export const LoginPage = ({ handleLogin, handleLogout }: ILoginPageProps) => {
   const isAuth = useAuthStatus(false);
-  const form = useForm<ILoginModel>();
+  const form = useForm<ILoginViewType>();
   return (
     <div>
       {isAuth ? (

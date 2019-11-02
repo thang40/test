@@ -11,7 +11,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Sass
 - Typescript
 - react-hook-form
-- react-styleguidist
+
+## Documentation & Source control
+
+- Husky
+- Eslint
+- React-styleguidist
 
 ### React + Typescript
 
@@ -21,7 +26,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Folder structure
 
 ```
-test
+Distichain
 │
 ├── README.md
 ├── package.json

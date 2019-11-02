@@ -1,9 +1,9 @@
 import React, { ComponentType } from "react";
 import { useAuthStatus } from "../hooks/authHooks";
-import { IAuthProps } from "../commons/types/propType";
+import { IAuthPropsType } from "../commons/types";
 
 export const withAuth = (
-  Comp: ComponentType<IAuthProps>,
+  Comp: ComponentType<IAuthPropsType>,
   expectedStatus?: Boolean
 ) => {
   return React.forwardRef((props, ref) => {

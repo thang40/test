@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../consts";
-import { IAuthProps } from "../../types/propType";
+import { IAuthPropsType } from "../../types";
 
-interface HeaderProps extends IAuthProps {}
+interface HeaderProps extends IAuthPropsType {}
 
 export const Header = ({ isAuth }: HeaderProps) => {
   return (
@@ -17,9 +17,14 @@ export const Header = ({ isAuth }: HeaderProps) => {
             <Link to={ROUTES.USER_ROUTE}>User</Link>
           </li>
         ) : (
-          <li>
-            <Link to={ROUTES.LOGIN_ROUTE}>Login</Link>
-          </li>
+          <React.Fragment>
+            <li>
+              <Link to={ROUTES.LOGIN_ROUTE}>Login</Link>
+            </li>
+            <li>
+              <Link to={ROUTES.REGISTER_ROUTE}>Register</Link>
+            </li>
+          </React.Fragment>
         )}
       </ul>
     </header>

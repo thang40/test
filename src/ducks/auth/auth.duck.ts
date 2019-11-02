@@ -1,7 +1,6 @@
 import { put, takeLatest, fork } from "redux-saga/effects";
 import { clearAuthData, getAuthData } from "../../services/auth.service";
-import { ILoginModel } from "../../commons/types/models/viewModels/login.model";
-import { IActionModel } from "../../commons/types/models/systemModels/action.model";
+import { ILoginViewType, IActionModel } from "../../commons/types";
 
 const LOGIN_REQUEST = "@@Auth/LOGIN_REQUEST";
 const LOGOUT_REQUEST = "@@Auth/LOGOUT_REQUEST";
@@ -10,8 +9,11 @@ const LOGOUT_SUCCESS = "@@Auth/LOGOUT_SUCCESS";
 const INIT_USERDATA = "@@Auth/INIT_USERDATA";
 
 // action creator
-export const loginAction = (loginValues: ILoginModel) => {
-  return { type: LOGIN_REQUEST, payload: { loginValues } };
+export const loginAction = (
+  loginValues: ILoginViewType,
+  setError: Function
+) => {
+  return { type: LOGIN_REQUEST, payload: { loginValues, setError } };
 };
 export const logoutAction = () => {
   return { type: LOGOUT_REQUEST };
@@ -67,7 +69,7 @@ export const selectUserRoles = (state: any) => state.AuthReducer.roles;
 function* watchLogin(action: IActionModel) {
   const adminUsername = process.env.REACT_APP_ADMIN_USERNAME;
   const adminPassword = process.env.REACT_APP_ADMIN_PASSWORD;
-  const { loginValues } = action.payload;
+  const { loginValues, setError } = action.payload;
   const { username, password } = loginValues;
   try {
     if (username === adminUsername && password === adminPassword) {
@@ -84,7 +86,7 @@ function* watchLogin(action: IActionModel) {
         payload: authValues
       });
     } else {
-      console.log("failed");
+      setError("wrong credestial");
     }
   } catch (error) {
     console.log(error);

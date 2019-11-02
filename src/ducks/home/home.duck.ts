@@ -1,20 +1,20 @@
-import { IActionModel } from "../../commons/types/models/systemModels/action.model";
+import { IActionModel } from "../../commons/types";
 
 const HOME_FETCH_SEARCH_REQUEST = "@@Home/FETCH_SEARCH_REQUEST";
 
 // action creator
 export const searchRequestAction = (searchText: string) => {
-    return { type: HOME_FETCH_SEARCH_REQUEST, payload: searchText };
+  return { type: HOME_FETCH_SEARCH_REQUEST, payload: searchText };
 };
 // reducer
 const initialState = {
-    searchData: []
+  searchData: []
 };
 
 export const HomeReducer = (state = initialState, action: IActionModel) => {
-    switch (action.type) {
-        default: {
-            return state;
-        }
+  switch (action.type) {
+    default: {
+      return state;
     }
+  }
 };
